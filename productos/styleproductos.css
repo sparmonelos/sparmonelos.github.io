@@ -122,29 +122,36 @@ body { font-family: 'Inter', sans-serif; overflow-x: hidden; }
 }
 
 @media (max-width: 768px) {
-    .hero-categoria h1 { font-size: 3rem; }
-    .hero-buttons-inline { flex-direction: column; }
-    .footer-grid { flex-direction: column; text-align: center; gap: 20px; }
-}
+    .hero-categoria {
+        /* Bajamos la altura en móvil para que la foto no se estire tanto */
+        height: 60vh; 
+        
+        /* Forzamos que se vea el centro de las estanterías */
+        background-position: center center; 
+        
+        /* IMPORTANTE: El efecto fixed en móviles rompe el escalado de imagen */
+        background-attachment: scroll; 
+    }
 
-.buscador-container{
-margin-top:20px;
-display:flex;
-justify-content:center;
-}
+    .hero-categoria h1 {
+        font-size: 2.5rem; /* Ajustamos el título para que no tape toda la foto */
+        text-align: center;
+    }
 
-#buscadorProductos{
-width:100%;
-max-width:400px;
-padding:12px 15px;
-border-radius:8px;
-border:1px solid var(--border-color);
-font-size:16px;
-outline:none;
-transition:0.3s;
-}
+    .hero-content {
+        max-width: 100%;
+        padding: 0 10px;
+        text-align: center; /* Centramos el texto en móvil para mejor estética */
+    }
 
-#buscadorProductos:focus{
-border-color:var(--primary-green);
-box-shadow:0 0 0 3px rgba(39,126,72,0.2);
+    .hero-buttons-inline {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+
+    .btn-outline-hero {
+        width: 100%; /* Botones a ancho completo para que sea fácil pulsar con el pulgar */
+        text-align: center;
+    }
 }
