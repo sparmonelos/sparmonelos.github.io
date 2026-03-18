@@ -1,0 +1,150 @@
+:root {
+    --primary-red: red;
+    --primary-red-hover: red;
+    --primary-green: #277e48;
+    --dark-green: #1e6036;
+    --bg-light: #fbfaf8;
+    --bg-white: #ffffff;
+    --text-dark: #22252a;
+    --text-gray: #5a6068;
+    --border-color: #e5e7eb;
+    --footer-bg: #1e2227;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Inter', sans-serif; overflow-x: hidden; }
+
+.container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+
+/* --- EFECTO HERO PARALLAX --- */
+.hero-categoria {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* ESTO CREA EL EFECTO DE CUBRIR EL FONDO */
+    position: relative;
+    color: white;
+}
+
+.overlay {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(to right, rgba(0,0,0,0.8) 40%, transparent);
+    z-index: 1;
+}
+
+.hero-content { position: relative; z-index: 2; max-width: 700px; }
+
+.badge-tag {
+    background: var(--primary-green);
+    padding: 8px 16px; border-radius: 6px;
+    font-weight: 800; font-size: 0.85rem;
+    display: inline-block; margin-bottom: 20px;
+}
+
+.hero-categoria h1 { font-family: 'Playfair Display', serif; font-size: 4.5rem; line-height: 1; margin-bottom: 20px; }
+.highlight-red { color: var(--primary-red); }
+.highlight-green { color: #4ade80; } /* Un verde más brillante para contraste */
+
+.hero-buttons-inline { display: flex; gap: 15px; margin-top: 30px; }
+
+.btn-outline-hero {
+    border: 2px solid white; padding: 12px 24px; border-radius: 8px;
+    color: white; text-decoration: none; font-weight: 600;
+    transition: 0.3s; background: rgba(255,255,255,0.05);
+}
+
+.btn-outline-hero:hover { background: white; color: var(--text-dark); }
+
+/* --- GRILLA DE PRODUCTOS --- */
+.mensaje-sin-productos{
+    text-align: center;
+    padding: 60px 20px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.mensaje-sin-productos h2{
+    font-size: 2rem;
+    margin-bottom: 15px;
+}
+
+.info-tienda{
+    margin: 20px 0;
+    font-weight: 500;
+}
+
+.btn-whatsapp{
+    display: inline-block;
+    background-color: #25D366;
+    color: white;
+    padding: 14px 22px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.btn-whatsapp:hover{
+    background-color: #1ebe5d;
+    transform: scale(1.05);
+}
+
+/* --- FOOTER --- */
+.footer {
+    background-color: var(--footer-bg);
+    color: white;
+    padding: 3rem 0 1.5rem 0;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.footer-left h3 { font-size: 1.8rem; margin-bottom: 5px; }
+.footer-left p { color: #a0aab2; font-size: 0.9rem; }
+.footer-right p { margin-bottom: 5px; color: #d1d5db; }
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 1.5rem;
+    font-size: 0.85rem;
+    color: #8c96a1;
+}
+
+@media (max-width: 768px) {
+    .hero-categoria h1 { font-size: 3rem; }
+    .hero-buttons-inline { flex-direction: column; }
+    .footer-grid { flex-direction: column; text-align: center; gap: 20px; }
+}
+
+.buscador-container{
+margin-top:20px;
+display:flex;
+justify-content:center;
+}
+
+#buscadorProductos{
+width:100%;
+max-width:400px;
+padding:12px 15px;
+border-radius:8px;
+border:1px solid var(--border-color);
+font-size:16px;
+outline:none;
+transition:0.3s;
+}
+
+#buscadorProductos:focus{
+border-color:var(--primary-green);
+box-shadow:0 0 0 3px rgba(39,126,72,0.2);
+}

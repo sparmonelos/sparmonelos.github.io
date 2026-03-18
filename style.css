@@ -1,0 +1,470 @@
+:root {
+    --primary-orange: red;
+    --primary-orange-hover: red;
+    --primary-green: #277e48;
+    --dark-green: #1e6036;
+    --bg-light: #fbfaf8;
+    --bg-white: #ffffff;
+    --text-dark: #22252a;
+    --text-gray: #5a6068;
+    --border-color: #e5e7eb;
+    --footer-bg: #1e2227;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    color: var(--text-dark);
+    line-height: 1.6;
+}
+
+h1, h2, h3 {
+    font-family: 'Playfair Display', serif;
+}
+
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.subtitle { color: var(--text-gray); margin-bottom: 2rem; }
+.highlight { color: var(--primary-orange); }
+.block { display: block; }
+
+.bg-light { background-color: var(--bg-light); }
+.bg-white { background-color: var(--bg-white); }
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.section {
+    padding: 5rem 0;
+}
+
+/* --- Botones --- */
+.btn {
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-weight: 500;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 1rem;
+    border: none;
+    transition: all 0.3s;
+}
+
+.btn-primary {
+    background-color: var(--primary-orange);
+    color: white;
+}
+.btn-primary:hover { background-color: var(--primary-orange-hover); }
+
+.btn-outline {
+    background-color: transparent;
+    border: 2px solid white;
+    color: white;
+}
+
+.btn-outline:hover { background-color: rgba(255,255,255,0.1); }
+
+.btn-green {
+    background-color: var(--primary-green);
+    color: white;
+    margin-top: 1.5rem;
+}
+.btn-green:hover { background-color: var(--dark-green); }
+
+/* Menú de navegación superior */
+.main-nav {
+    position: absolute; /* Fijo en pantalla */
+    top: 20px;
+    right: 20px;
+    z-index: 100; /* Encima de todo */
+    backdrop-filter: blur(6px);
+    background: rgba(0,0,0,0.25);
+    padding: 8px 12px;
+    border-radius: 10px;
+}
+
+.main-nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.main-nav a {
+    text-decoration: none;
+    color: white; /* para hero oscuro */
+    font-weight: 600;
+    padding: 8px 12px;
+    border-radius: 6px;
+    transition: background 0.3s, color 0.3s;
+}
+
+.main-nav a:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: #fff;
+}
+
+/* Para móviles: menú vertical y más pequeño */
+@media (max-width: 768px) {
+
+.main-nav {
+    position: static;      /* deja de estar en la esquina */
+    margin-top: 15px;
+}
+
+.main-nav ul {
+    flex-direction: column;
+    align-items: center;   /* centra los enlaces */
+    gap: 10px;
+}
+
+}
+
+/* --- Hero Section --- */
+/* Hero con efecto estático (Parallax) */
+.hero { 
+    height: 100vh; /* Un poco más alta para que luzca el efecto */
+    width: 100%;
+    background-image: url(imagenes/Fondos/fondo-principal.JPG);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+    /* ESTO HACE QUE LA IMAGEN SE QUEDE QUIETA */
+    background-attachment: fixed; 
+    
+    position: relative; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    color: white;
+}
+
+/* Ajuste para móviles: En teléfonos el 'fixed' suele dar problemas, 
+   así que lo desactivamos para que sea fluido en iOS/Android */
+@media (max-width: 768px) {
+    .hero {
+        background-attachment: scroll;
+        height: 60vh;
+    }
+}
+
+.hero .overlay {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0, 0, 0, 0.6);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 800px;
+    padding: 20px;
+}
+
+.hero .badge {
+    background-color: var(--primary-green);
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.hero h1 {
+    font-size: 4rem;
+    margin: 20px 0;
+    line-height: 1.1;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+}
+
+/* --- Tarjetas (Cards) Generales --- */
+.card {
+    background: white;
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+}
+
+.servicio-card {
+    transition: 0.5s;
+}
+
+.servicio-card:hover {
+    transform: scale(1.05); /* Un pequeño salto hacia arriba */
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+/* ==========================================================
+   NUEVA SECCIÓN: HORARIO Y REDES SOCIALES
+   ========================================================== */
+.horario-social-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    align-items: start;
+}
+
+.horario-card {
+    margin: 2rem auto;
+}
+.horario-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 0;
+    border-bottom: 1px solid var(--border-color);
+}
+.horario-row:last-child { border-bottom: none; }
+.horario-row span:first-child { font-weight: 600; }
+.nota-horario { font-size: 0.9rem; color: var(--text-gray); }
+
+/* Botones de Redes Sociales */
+.social-links {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.social-btn {
+    display: flex; /* Alinea icono y texto */
+    align-items: center;
+    justify-content: center;
+    gap: 10px; /* Espacio entre icono y texto */
+    padding: 12px;
+    border-radius: 8px;
+    text-decoration: none;
+    color: white;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.facebook { background-color: #1877f2; }
+.instagram { background-color: #e1306c; }
+.tiktok { background-color: #000000; }
+
+.social-btn:hover {
+    transform: scale(1.02);
+    filter: brightness(1.2);
+}
+
+/* --- Productos --- */
+.productos-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    align-items: center;
+    margin-top: 2rem;
+}
+
+.categorias {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.categoria-item {
+    padding: 15px;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    text-align: center;
+    text-decoration: none; /* Quita el subrayado del enlace */
+    color: var(--text-dark); /* Usamos la variable de texto que me diste */
+    font-weight: 500;
+    
+    /* El cambio de cursor al pasar el ratón */
+    cursor: pointer;
+    
+    /* Pequeña animación suave */
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.categoria-item:hover {
+    background-color: var(--primary-orange);
+    color: white;
+    border-color: var(--primary-orange);
+    transform: scale(1.05); /* Un pequeño salto hacia arriba */
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+.productos-imagen img {
+    width: 100%;
+    border-radius: 16px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+/* --- Servicios --- */
+.servicios-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px 30px;
+    margin-top: 2rem;
+}
+
+.icon-box {
+    background: #fff3e0;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+}
+
+.servicio-card h3 { margin-bottom: 10px; }
+
+/* --- Mapa --- */
+.mapa-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 30px;
+    margin-top: 2rem;
+}
+
+.mapa-iframe {
+    border-radius: 16px;
+    overflow: hidden;
+    min-height: 350px;
+}
+
+.mapa-info .info-item { margin-bottom: 20px; }
+.mapa-info strong { display: block; font-size: 1.1rem; color: var(--primary-green); margin-bottom: 5px; }
+
+/* --- Footer --- */
+.footer {
+    background-color: var(--footer-bg);
+    color: white;
+    padding: 3rem 0 1.5rem 0;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.footer-left h3 { font-size: 1.8rem; margin-bottom: 5px; }
+.footer-left p { color: #a0aab2; font-size: 0.9rem; }
+.footer-right p { margin-bottom: 5px; color: #d1d5db; }
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 1.5rem;
+    font-size: 0.85rem;
+    color: #8c96a1;
+}
+
+/* --- Responsive (Móviles) --- */
+@media (max-width: 768px) {
+    .hero h1 { font-size: 2.5rem; }
+    .hero-buttons { flex-direction: column; }
+    .horario-row { flex-direction: column; text-align: left; gap: 5px; }
+    
+    /* IMPORTANTE: Añadí la clase .horario-social-grid aquí para que las redes bajen debajo del horario en móviles */
+    .productos-grid, .categorias, .servicios-grid, .mapa-grid, .footer-content, .horario-social-grid {
+        grid-template-columns: 1fr;
+    }
+    .footer-content { flex-direction: column; text-align: center; gap: 20px; }
+}
+
+#btnSubir {
+    position: fixed;        /* Fijo en la pantalla */
+    bottom: 30px;           /* Separación desde abajo */
+    right: 30px;            /* Separación desde la derecha */
+    z-index: 9999;
+    padding: 12px 16px;
+    font-size: 1.5rem;
+    border: none;
+    border-radius: 50%;
+    background-color: var(--primary-green);
+    color: white;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    display: none;          /* Se muestra solo al bajar */
+    transition: all 0.3s ease;
+}
+
+#btnSubir:hover {
+    background-color: var(--dark-green);
+    transform: scale(1.1);
+}
+
+@media (max-width: 768px){
+
+/* HERO MÁS PEQUEÑO Y FLEXIBLE */
+.hero {
+    height: auto;          /* 🔥 clave */
+    min-height: 70vh;
+    padding: 80px 20px 40px 20px;
+}
+
+/* TEXTO AJUSTADO */
+.hero h1 {
+    font-size: 2.2rem;
+    line-height: 1.2;
+}
+
+.hero p {
+    font-size: 1rem;
+}
+
+/* BOTONES EN COLUMNA */
+.hero-buttons {
+    flex-direction: column;
+    align-items: center;
+}
+
+/* NAV MEJOR POSICIONADO */
+.main-nav {
+    position: static;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.main-nav ul {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+/* EVITA QUE EL CONTENIDO SE PEGUE A LOS BORDES */
+.container {
+    padding: 0 15px;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+.hero .badge {
+    font-size: clamp(0.7rem, 2.5vw, 0.9rem);
+    white-space: nowrap;
+}
+
+}
